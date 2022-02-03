@@ -1,0 +1,19 @@
+.loginPage {
+  margin-top: 20vh;
+  display: flex;
+  .indexSignUp {
+    text-align: left;
+    margin-right: 180px;
+    a {
+      margin-top: 22px;
+    }
+  }
+  .indexLogin {
+    .loginButton {
+      text-align: right;
+    }
+    button {
+      margin-top: 10px;
+    }
+  }
+}
