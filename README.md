@@ -29,7 +29,13 @@ The primary use-cases for the app are two-fold:
 5. Run the command: `python manage.py runserver` (Windows) or `python3 manage.py runserver`(Mac)
 The default port is 8000. Add the port-number as a parameter to runserver to use a different
 port to run the server. For Example: `python manage.py runserver 9000`
-   
+
+When the server is running after step 5 of the procedure, the LITReview-Website can be 
+accessed with your browser by pasting the URL: `http://127.0.0.1:8000/` 
+or copy and paste the URL that is displayed in the Terminal.
+
+Steps 1-4 are only required for initial installation. For subsequent launches,
+you only have to execute step 5 from the root folder of the project.
 
 ## Technologies
 - Python version 3.9.5
