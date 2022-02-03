@@ -10,37 +10,27 @@ The primary use-cases for the app are two-fold:
 1. Python version 3.9.5 or higher must be installed.
 2. Create the directory in which you want to keep the program.
 3. Open your terminal.
-4. Navigate to the folder with the "LITReview" -folder and requirements.txt in it
-5. Create your Virtual Environment by running the command: `python -m venv .venv`
+4. Navigate to the folder that contains the `manage.py` and `requirements.txt` files
+5. Create your Virtual Environment by running the command: `python -m venv venv`
 6. Activate the Environment by running: 
- `.venv\Scripts\activate.bat` (Windows) 
- or `.venv\Scripts\activate.ps1` (Powershell)
- or `source .venv/bin/activate` (OS)
+ `venv\Scripts\activate.bat` (Windows) 
+ or `venv\Scripts\activate.ps1` (Powershell)
+ or `source venv/bin/activate` (OS)
 7. Install the Requirements by running the command: `pip install -r requirements.txt`
    
 # How to run the program:
 1. Open your terminal
-2. Navigate to the directory that contains the "chess_club_app" folder
+2. Navigate to the directory that contains the `manage.py` file
 3. Activate the environment by running: 
- `.venv\Scripts\activate.bat` (Windows) 
- or `.venv\Scripts\activate.ps1` (Powershell)
- or `source .venv/bin/activate` (OS)
-4. Run the command: `python -m chess_club_app`
-
-# How to create a Flake8 html report:
-1. Open your terminal
-2. Navigate to the directory that contains the "chess_club_app" folder
-3. Activate the environment by running: 
- `.venv\Scripts\activate.bat` (Windows) 
- or `.venv\Scripts\activate.ps1` (Powershell)   
- or `source .venv/bin/activate` (OS)
-4. Run the command: `flake8 --format=html --htmldir=flake-report`
+ `venv\Scripts\activate.bat` (Windows) 
+ or `venv\Scripts\activate.ps1` (Powershell)
+ or `source venv/bin/activate` (OS)
+4. Run the command: `python manage.py create_db` (Windows) or `python3 manage.py create_db`(Mac)
+5. Run the command: `python manage.py runserver` (Windows) or `python3 manage.py runserver`(Mac)
+The default port is 8000. Add the port-number as a parameter to runserver to use a different
+port to run the server. For Example: `python manage.py runserver 9000`
    
-## Notes
-- The program will create a database folder and file automatically
-- The folder and files for the flake8 report will be created automatically
 
 ## Technologies
 - Python version 3.9.5
-- TinyDB version 4.5.1
-- Flake8 version 4.0.1
+- Django version 4.0.1
