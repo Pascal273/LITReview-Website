@@ -2,13 +2,26 @@
   margin-top: 10vh;
   display: flex;
   .indexSignUp {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     text-align: left;
     margin-right: 180px;
     a {
-      margin-top: 22px;
+      margin-top: 28px;
     }
   }
   .indexLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .form-group {
+      width: 300px;
+      padding: 10px 0 10px 0;
+      input {
+        text-align: center
+      }
+    }
     .loginButton {
       text-align: right;
     }

@@ -1,9 +1,16 @@
 .signUp {
   margin: 20vh;
-  width: 500px;
+  width: 50vh;
   display: flex;
   align-items: center;
   flex-direction: column;
+  .form-group {
+    width: 50vh;
+    padding: 15px 0 15px 0;
+    input {
+      text-align: center
+    }
+  }
   .signUp-buttons {
     width: 100%;
     display: flex;
