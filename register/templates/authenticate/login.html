@@ -7,6 +7,14 @@ Log In
 {% load crispy_forms_tags %}
 
 {% block content %}
+
+
+
+<div class="alert alert-warning" role="alert"
+style="{% if not failed %}visibility: hidden{% endif %}">
+  Login failed! No account? <a href="/register" class="alert-link">Sign Up here</a>!
+  </div>
+
 <div class="loginPage">
   <div class="indexSignUp">
     <h2>Sign UP Now</h2>

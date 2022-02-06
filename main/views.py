@@ -8,6 +8,6 @@ def index(request):
     return redirect("/home")
 
 
-@login_required(login_url="/login/")    # redirect to login if not logged in
+@login_required    # redirect to login if not logged in
 def home(request):
     return render(request, "main/home.html", {})
