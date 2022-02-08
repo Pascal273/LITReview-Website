@@ -12,13 +12,13 @@ Log In
 
 <div class="alert alert-warning" role="alert"
 style="{% if not failed %}visibility: hidden{% endif %}">
-  Login failed! No account? <a href="/register" class="alert-link">Sign Up Now</a>!
+  Login failed! No account? <a href="{% url 'register' %}" class="alert-link">Sign Up Now</a>!
   </div>
 
 <div class="loginPage">
   <div class="indexSignUp">
     <h2>Sign UP Now</h2>
-  <a href="/register" class="btn btn-primary">Sign Up</a>
+  <a href="{% url 'register' %}" class="btn btn-primary">Sign Up</a>
   </div>
   <div class="indexLogin">
     <h1>Log In</h1>
