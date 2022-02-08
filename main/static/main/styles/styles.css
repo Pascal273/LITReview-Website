@@ -1,0 +1,106 @@
+.container-fluid {
+  width: 100vw;
+}
+.container-fluid .profile-dropdown {
+  visibility: hidden;
+}
+.container-fluid .profile-dropdown li {
+  list-style-type: none;
+}
+.container-fluid .profile-dropdown ul {
+  margin: 0;
+  padding: 0;
+}
+.container-fluid .profile-dropdown a {
+  color: black;
+}
+.container-fluid .navbar-collapse {
+  justify-content: flex-end;
+  visibility: hidden;
+}
+.container-fluid .lit-review-name {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.signUp {
+  margin: 20vh;
+  width: 50vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.signUp .form-group {
+  width: 50vh;
+  padding: 15px 0 15px 0;
+}
+.signUp .form-group input {
+  text-align: center;
+}
+.signUp .signUp-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+.signUp a {
+  margin-right: 15px;
+}
+
+.loginPage {
+  margin-top: 10vh;
+  display: flex;
+}
+.loginPage .indexSignUp {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-right: 180px;
+}
+.loginPage .indexSignUp a {
+  margin-top: 28px;
+}
+.loginPage .indexLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loginPage .indexLogin .form-group {
+  width: 300px;
+  padding: 10px 0 10px 0;
+}
+.loginPage .indexLogin .form-group input {
+  text-align: center;
+}
+.loginPage .indexLogin .loginButton {
+  text-align: right;
+}
+.loginPage .indexLogin button {
+  margin-top: 10px;
+}
+
+.alert-warning {
+  margin-top: 10vh;
+}
+
+.home-review-options {
+  width: 60vw;
+  display: flex;
+  justify-content: space-between;
+}
+.home-review-options a {
+  width: 50%;
+  margin: 50px;
+  border: solid 1px;
+}
+
+body {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*# sourceMappingURL=styles.css.map */
