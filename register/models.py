@@ -4,3 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     profile_picture = models.ImageField()
+    follows = models.ManyToManyField(
+        'self',
+        symmetrical=False
+    )
