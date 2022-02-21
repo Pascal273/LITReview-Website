@@ -8,7 +8,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              User Profile
+              {{ request.user }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="#">Action</a></li>
@@ -22,22 +22,22 @@
               aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand lit-review-name mx-auto" href="/home">LITReview</a>
+      <a class="navbar-brand lit-review-name mx-auto" href="{% url 'home' %}">LITReview</a>
       <!-- only visible if User is authenticated -->
       <div class="collapse navbar-collapse" id="navbarNavDropdown"
            style="{% if user.is_authenticated %}visibility:visible{% endif %}">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Feed</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Feed</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Posts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Following</a>
+            <a class="nav-link" href="{% url 'following' %}">Following</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/logout">Log out</a>
+            <a class="nav-link" href="{% url 'logout' %}">Log out</a>
           </li>
         </ul>
       </div>

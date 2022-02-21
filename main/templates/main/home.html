@@ -6,8 +6,8 @@ Welcome
 
 {% block content %}
   <div class="home-review-options">
-    <a class="btn btn-light" href="#" role="button">Request a Review</a>
-    <a class="btn btn-light" href="#" role="button">Post a Review</a>
+    <a class="btn btn-light" href="{% url 'create_ticket' %}" role="button">Request a Review</a>
+    <a class="btn btn-light" href="{% url 'create_review' %}" role="button">Post a Review</a>
   </div>
   <div class="feed">
 

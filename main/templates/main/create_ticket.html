@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+  Create a Ticket
+{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="ticket-content">
+  <h4>Create a Ticket</h4>
+  <form method="post" class="form-group">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+{% endblock content %}
