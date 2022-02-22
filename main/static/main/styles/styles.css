@@ -107,7 +107,7 @@
 }
 .following form {
   display: flex;
-  width: 80%;
+  width: 100%;
 }
 .following form div {
   width: 95%;
