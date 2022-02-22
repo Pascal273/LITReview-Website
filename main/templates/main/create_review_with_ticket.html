@@ -11,12 +11,22 @@
 <div class="ticket-with-review-content">
   <h4>Create a Review</h4>
   <form method="post" class="form-group">
-    {{ ticket_form|crispy }}
-    {% csrf_token %}
+    <div class="form-section">
+      <h4>Book / Article</h4>
+      {{ ticket_form|crispy }}
+      {% csrf_token %}
+    </div>
 
-    {{ review_form|crispy }}
-    {% csrf_token %}
-    <button type="submit">Submit</button>
+    <div class="form-section">
+      <h4>Review</h4>
+      {{ review_form|crispy }}
+      {% csrf_token %}
+      <div id="review-with-ticket-button-area">
+        <button type="submit">Submit</button>
+      </div>
+
+    </div>
+
   </form>
 </div>
 
