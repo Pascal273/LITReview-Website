@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
+from django.contrib import messages
 
 from. import forms
 
@@ -17,12 +19,26 @@ def home(request):
 
 @login_required
 def following(request):
-
-    form = forms.FollowUserForm(instance=request.user)
+    form = forms.FollowUserForm()
     if request.method == 'POST':
-        form = forms.FollowUserForm(request.POST, instance=request.user)
+        form = forms.FollowUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            if form.cleaned_data:
+                name = form.cleaned_data['follow_user']
+                User = get_user_model()
+                users = User.objects.all()
+                # check if user exists
+                if name in [user.username for user in users]:
+                    # check if user is yourself
+                    if name == request.user.username:
+                        messages.info(request, "You cant Follow yourself!")
+                    else:
+                        # follow the user
+                        user = request.user
+                        user_to_follow = User.objects.get(username=name)
+                        user.follows.add(user_to_follow)
+                else:
+                    messages.info(request, "User not found!")
     return render(request, "main/following.html", {'form': form})
 
 

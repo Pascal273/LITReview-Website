@@ -16,7 +16,15 @@ Users Following
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
 
+    {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+    {% endif %}
   </div>
+
   <div class="following">
     <h3>Following</h3>
     <table class="table table-bordered">

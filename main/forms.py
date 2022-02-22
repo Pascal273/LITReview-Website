@@ -5,13 +5,12 @@ from django.forms import RadioSelect
 from . import models
 
 
-class FollowUserForm(forms.ModelForm):
-    class Meta:
-        model = get_user_model()
-        fields = ['follows']
-        labels = {
-            'follows': '',
-        }
+class FollowUserForm(forms.Form):
+    follow_user = forms.CharField(
+        max_length=30,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Username"})
+    )
 
 
 class CreateTicketForm(forms.ModelForm):
