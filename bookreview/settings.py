@@ -133,3 +133,6 @@ AUTH_USER_MODEL = "register.User"   # sets my own User model for user creation
 LOGIN_URL = 'login'
 
 LOGOUT_REDIRECT_URL = "/login/"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'

@@ -57,8 +57,10 @@ def create_ticket(request):
     if request.method == 'POST':
         form = forms.CreateTicketForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            redirect('home')
+            ticket = form.save(commit=False)
+            ticket.user = request.user
+            ticket.save()
+            return redirect('home')
     return render(request, 'main/create_ticket.html', {'form': form})
 
 
@@ -68,7 +70,9 @@ def create_review(request):
     if request.method == 'POST':
         form = forms.CreateReviewForm(request.POST)
         if form.is_valid():
-            form.save()
+            review = form.save(commit=False)
+            review.user = request.user
+            review.save()
             redirect('home')
     return render(request, 'main/create_review.html', {'form': form})
 
@@ -81,8 +85,13 @@ def create_ticket_with_review(request):
         ticket_form = forms.CreateTicketForm(request.POST, request.FILES)
         review_form = forms.CreateReviewForm(request.POST)
         if all([ticket_form.is_valid(), review_form.is_valid()]):
-            ticket_form.save()
-            review_form.save()
+            ticket = ticket_form.save(commit=False)
+            ticket.user = request.user
+            ticket.save()
+            review = review_form.save(commit=False)
+            review.user = request.user
+            review.ticket = ticket
+            review.save()
             return redirect('home')
     context = {
         'ticket_form': ticket_form,
