@@ -20,8 +20,11 @@ def home(request):
 @login_required
 def following(request):
     form = forms.FollowUserForm()
+    current_user = request.user
+    follows = current_user.following.all()
     if request.method == 'POST':
         form = forms.FollowUserForm(request.POST)
+        # follow users
         if form.is_valid():
             if form.cleaned_data:
                 name = form.cleaned_data['follow_user']
@@ -30,16 +33,22 @@ def following(request):
                 # check if user exists
                 if name in [user.username for user in users]:
                     # check if user is yourself
-                    if name == request.user.username:
+                    if name == current_user.username:
                         messages.info(request, "You cant Follow yourself!")
                     else:
                         # follow the user
-                        user = request.user
                         user_to_follow = User.objects.get(username=name)
-                        user.follows.add(user_to_follow)
+                        current_user.follows.add(user_to_follow)
+                        return redirect('following')
                 else:
                     messages.info(request, "User not found!")
-    return render(request, "main/following.html", {'form': form})
+        # unfollow users
+        elif request.POST.get("unfollow"):
+            user_to_unfollow = request.POST["unfollow"]
+            current_user.follows.remove(user_to_unfollow)
+            return redirect('following')
+    return render(request, "main/following.html",
+                  {'form': form, 'follows': follows})
 
 
 @login_required

@@ -7,45 +7,48 @@ Users Following
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="following-content">
-  <div class="following">
-    <h3>Follow New Users</h3>
-    <form method="post">
-      {{ form|crispy }}
-      {% csrf_token %}
-      <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+  <div class="following-content">
+    <div class="following">
+      <h3>Follow New Users</h3>
+      <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
 
-    {% if messages %}
-      <ul class="messages">
-          {% for message in messages %}
-          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <div class="following">
+      <h3>Following</h3>
+      <form method="post">
+        {% csrf_token %}
+        <table class="table table-bordered">
+          {% for obj in follows %}
+            <tr>
+              <td>{{ obj.followed_user }}</td>
+              <td class="table-button"><button name="unfollow" value="{{ obj.followed_user.id }}" class="btn btn-secondary" type=submit>Unfollow</button></td>
+            </tr>
           {% endfor %}
-      </ul>
-    {% endif %}
-  </div>
+        </table>
+      </form>
+    </div>
 
-  <div class="following">
-    <h3>Following</h3>
-    <table class="table table-bordered">
-      {% for obj in request.user.following.all %}
-        <tr>
-          <td>{{ obj.followed_user }}</td>
-          <td class="table-button"><button class="btn btn-secondary" type=button>Unfollow</button></td>
-        </tr>
-      {% endfor %}
-    </table>
+    <div class="following">
+      <h3>Followers</h3>
+      <table class="table table-bordered">
+        {% for obj in request.user.followed_by.all %}
+          <tr>
+            <td>{{ obj.user }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
   </div>
-
-  <div class="following">
-    <h3>Followers</h3>
-    <table class="table table-bordered">
-      {% for obj in request.user.followed_by.all %}
-        <tr>
-          <td>{{ obj.user }}</td>
-        </tr>
-      {% endfor %}
-    </table>
-  </div>
-</div>
 {% endblock content %}
