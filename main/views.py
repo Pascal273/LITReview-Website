@@ -1,10 +1,12 @@
+from itertools import chain
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 
-from. import forms
+from. import forms, models
 
 
 # redirect to Homepage
@@ -14,7 +16,20 @@ def index(request):
 
 @login_required    # redirect to login-page if not logged in
 def home(request):
-    return render(request, "main/home.html", {})
+
+    tickets = models.Ticket.objects.filter(
+        user__in=request.user.follows.all()
+    )
+
+    reviews = models.Review.objects.filter(
+        user__in=request.user.follows.all()
+    )
+
+    news = sorted(
+        chain(tickets, reviews), key=lambda i: i.time_created, reverse=True
+    )
+
+    return render(request, "main/home.html", {'feed': news})
 
 
 @login_required

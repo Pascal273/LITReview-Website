@@ -8,3 +8,29 @@
     border: solid 1px;
   }
 }
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+  .ticket-head {
+    display: flex;
+    justify-content: space-between;
+    width: 97%;
+  }
+  .ticket-view {
+    width: 95%;
+    border: solid 1px;
+    margin: 20px 0;
+    padding: 20px 10px;
+    .description {
+      width: 80%;
+    }
+    .post-review-button-area {
+      display: flex;
+      justify-content: flex-end;
+      width: 98%;
+    }
+  }
+}

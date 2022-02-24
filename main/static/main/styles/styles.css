@@ -96,6 +96,32 @@
   border: solid 1px;
 }
 
+.feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+}
+.feed .ticket-head {
+  display: flex;
+  justify-content: space-between;
+  width: 97%;
+}
+.feed .ticket-view {
+  width: 95%;
+  border: solid 1px;
+  margin: 20px 0;
+  padding: 20px 10px;
+}
+.feed .ticket-view .description {
+  width: 80%;
+}
+.feed .ticket-view .post-review-button-area {
+  display: flex;
+  justify-content: flex-end;
+  width: 98%;
+}
+
 .following {
   display: flex;
   flex-direction: column;
