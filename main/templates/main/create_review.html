@@ -8,12 +8,19 @@
 
 {% block content %}
 
-<div class="ticket-content">
-  <h4>Create a Review</h4>
+<div class="ticket-with-review-content">
+
   <form method="post" class="form-group">
-    {{ form|crispy }}
-    {% csrf_token %}
-    <button type="submit">Submit</button>
+    <div class="form-section">
+      <h5>You are posting in response to</h5>
+      {% include "main/partials/ticket_snippet.html" %}
+    </div>
+    <div class="form-section">
+      <h5>Review</h5>
+      {{ form|crispy }}
+      {% csrf_token %}
+      <button type="submit">Submit</button>
+    </div>
   </form>
 </div>
 

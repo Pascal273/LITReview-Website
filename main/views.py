@@ -1,6 +1,6 @@
 from itertools import chain
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -80,8 +80,9 @@ def create_ticket(request):
 
 
 @login_required
-def create_review(request):
+def create_review(request, ticket_id):
     form = forms.CreateReviewForm()
+    ticket = get_object_or_404(models.Ticket, id=ticket_id)
     if request.method == 'POST':
         form = forms.CreateReviewForm(request.POST)
         if form.is_valid():
@@ -89,7 +90,11 @@ def create_review(request):
             review.user = request.user
             review.save()
             redirect('home')
-    return render(request, 'main/create_review.html', {'form': form})
+    context = {
+        'form': form,
+        'post': ticket,
+    }
+    return render(request, 'main/create_review.html', context)
 
 
 @login_required

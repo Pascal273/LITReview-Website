@@ -129,29 +129,6 @@
   margin: 20px 0;
   padding: 20px 0;
 }
-.feed .ticket-head {
-  display: flex;
-  justify-content: space-between;
-  width: 97%;
-}
-.feed .ticket-view {
-  width: 95%;
-  border: solid 1px;
-  margin-top: 15px;
-  padding: 20px 10px;
-}
-.feed .ticket-view .description {
-  display: flex;
-}
-.feed .ticket-view .post-review-button-area {
-  display: flex;
-  justify-content: flex-end;
-  width: 98%;
-}
-.feed .ticket-view img {
-  max-width: 300px;
-  max-height: 300px;
-}
 
 .following {
   display: flex;
@@ -252,6 +229,31 @@
   width: 100px;
   border-radius: 3px;
   margin: 40px 0 20px 0;
+}
+
+.ticket-head {
+  display: flex;
+  justify-content: space-between;
+  width: 97%;
+}
+
+.ticket-view {
+  width: 95%;
+  border: solid 1px;
+  margin-top: 15px;
+  padding: 20px 10px;
+}
+.ticket-view .description {
+  display: flex;
+}
+.ticket-view .post-review-button-area {
+  display: flex;
+  justify-content: flex-end;
+  width: 98%;
+}
+.ticket-view img {
+  max-width: 300px;
+  max-height: 300px;
 }
 
 body {

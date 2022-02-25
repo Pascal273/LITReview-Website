@@ -17,9 +17,13 @@
       <img src="{{ post.image.url }}" alt="">
     </div>
   {% endif %}
-  <div class="post-review-button-area">
-    <a type="button" role="button" class="btn btn-secondary" href="{% url 'ticket_response' %}">Post a Review</a>
+  {% if not form %}
+    <div class="post-review-button-area">
+    <a type="button" role="button" class="btn btn-secondary"
+       href="{% url 'create_review' post.id %}">Post a Review</a>
   </div>
+  {% endif %}
+
 
 {% else %}
   <div class="ticket-head">
