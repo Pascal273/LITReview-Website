@@ -86,13 +86,13 @@
 }
 
 .home-review-options {
-  width: 60vw;
+  width: 70vw;
   display: flex;
   justify-content: space-between;
 }
 .home-review-options a {
   width: 50%;
-  margin: 50px;
+  margin: 30px 50px 10px 50px;
   border: solid 1px;
 }
 
@@ -141,7 +141,7 @@
   padding: 20px 10px;
 }
 .feed .ticket-view .description {
-  width: 80%;
+  display: flex;
 }
 .feed .ticket-view .post-review-button-area {
   display: flex;
