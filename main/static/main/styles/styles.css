@@ -96,11 +96,38 @@
   border: solid 1px;
 }
 
+.feed > * {
+  margin: 20px 0;
+}
+
 .feed {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 80vw;
+}
+.feed .review-head {
+  display: flex;
+  justify-content: space-between;
+  width: 97%;
+}
+.feed .review-body {
+  display: flex;
+  flex-direction: column;
+  width: 97%;
+  justify-content: flex-start;
+}
+.feed .review-body p {
+  margin: 0;
+}
+.feed .review-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  border: solid 1px;
+  margin: 20px 0;
+  padding: 20px 0;
 }
 .feed .ticket-head {
   display: flex;
@@ -110,7 +137,7 @@
 .feed .ticket-view {
   width: 95%;
   border: solid 1px;
-  margin: 20px 0;
+  margin-top: 15px;
   padding: 20px 10px;
 }
 .feed .ticket-view .description {
@@ -120,6 +147,10 @@
   display: flex;
   justify-content: flex-end;
   width: 98%;
+}
+.feed .ticket-view img {
+  max-width: 300px;
+  max-height: 300px;
 }
 
 .following {

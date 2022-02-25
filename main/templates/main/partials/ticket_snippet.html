@@ -1,0 +1,41 @@
+{% load main_extras %}
+<div class="ticket-view">
+{% if post|model_type == 'Ticket' %}
+
+  <div class="ticket-head">
+    <p>{% display_poster post.user %} requested a review</p>
+    <p>{{ post.time_created|get_posted_at_display }}</p>
+  </div>
+  <h5>{{ post.title }}</h5>
+  <div class="description">
+    {% if post.description %}
+    <p>{{ post.description }}</p>
+    {% endif %}
+  </div>
+  {% if post.image %}
+    <div class="ticket-image">
+      <img src="{{ post.image.url }}" alt="">
+    </div>
+  {% endif %}
+  <div class="post-review-button-area">
+    <a type="button" role="button" class="btn btn-secondary" href="{% url 'ticket_response' %}">Post a Review</a>
+  </div>
+
+{% else %}
+  <div class="ticket-head">
+    <p>Ticket - {% display_poster item.user %}</p>
+  </div>
+  <h5>{{ item.title }}</h5>
+  <div class="description">
+    {% if item.description %}
+    <p>{{ item.description }}</p>
+    {% endif %}
+  </div>
+  {% if item.image %}
+    <div class="ticket-image">
+      <img src="{{ item.image.url }}" alt="">
+    </div>
+  {% endif %}
+
+{% endif %}
+</div>

@@ -6,7 +6,7 @@ from PIL import Image
 
 class Ticket(models.Model):
     """The model for a Ticket."""
-    IMAGE_SIZE = (800, 800)     # max image size
+    IMAGE_SIZE = (300, 300)     # max image size
 
     title = models.CharField(max_length=128)
     description = models.TextField(max_length=2048, blank=True)

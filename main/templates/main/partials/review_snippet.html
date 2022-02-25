@@ -1,0 +1,16 @@
+{% load main_extras %}
+<div class="review-view">
+  <div class="review-head">
+    <p>{% display_poster post.user %} posted a review</p>
+    <p>{{ post.time_created|get_posted_at_display }}</p>
+  </div>
+  <div class="review-body">
+    <h4>{{ post.headline }} - {{ post.rating }}</h4>
+    <p>{{ post.body }}</p>
+  </div>
+  {% for item in feed %}
+    {% if item|model_type == 'Ticket' and item == post.ticket %}
+      {% include "main/partials/ticket_snippet.html" %}
+    {% endif %}
+  {% endfor %}
+</div>

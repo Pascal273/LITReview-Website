@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
+from django.db.models import Q
 
 from. import forms, models
 
@@ -16,20 +17,19 @@ def index(request):
 
 @login_required    # redirect to login-page if not logged in
 def home(request):
-
+    # get tickets created by followed users or the user
     tickets = models.Ticket.objects.filter(
-        user__in=request.user.follows.all()
+        Q(user__in=request.user.follows.all()) | Q(user=request.user)
     )
-
+    # get reviews created by followed users or the user
     reviews = models.Review.objects.filter(
-        user__in=request.user.follows.all()
+        Q(user__in=request.user.follows.all()) | Q(user=request.user)
     )
-
-    news = sorted(
+    # sort all items in feed, newest first
+    feed = sorted(
         chain(tickets, reviews), key=lambda i: i.time_created, reverse=True
     )
-
-    return render(request, "main/home.html", {'feed': news})
+    return render(request, "main/home.html", {'feed': feed})
 
 
 @login_required

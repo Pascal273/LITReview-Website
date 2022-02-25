@@ -27,4 +27,4 @@ def get_posted_at_display(post_time):
         return f'{minutes} minutes ago.'
     elif hours <= 24:
         return f'{hours} hours ago'
-    return post_time.strftime('%I:%M %p, %a %d, %Y')
+    return post_time.strftime('%I:%M %p, %b %d, %Y')

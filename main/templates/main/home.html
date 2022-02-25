@@ -13,24 +13,9 @@ Welcome
   <div class="feed">
     {% for post in feed %}
       {% if post|model_type == 'Ticket' %}
-        <div class="ticket-view">
-          <div class="ticket-head">
-            <p>{% display_poster post.user %} requested a review</p>
-            <p>{{ post.time_created|get_posted_at_display }}</p>
-          </div>
-          <h5>{{ post.title }}</h5>
-          {% if post.description %}
-            <div class="description">
-            <p>{{ post.description }}</p>
-            {% if post.image %}
-              <img src="{{ post.image.url }}" alt="">
-            {% endif %}
-            </div>
-          {% endif %}
-          <div class="post-review-button-area">
-            <a type="button" role="button" class="btn btn-secondary" href="{% url 'ticket_response' %}">Post a Review</a>
-          </div>
-        </div>
+        {% include "main/partials/ticket_snippet.html" %}
+      {% elif post|model_type == 'Review' %}
+        {% include "main/partials/review_snippet.html" %}
       {% endif %}
     {% endfor %}
   </div>
