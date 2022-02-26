@@ -19,7 +19,10 @@
       <h5>Review</h5>
       {{ form|crispy }}
       {% csrf_token %}
-      <button type="submit">Submit</button>
+      <div class="review-with-ticket-button-area">
+        <button type="submit">Submit</button>
+      </div>
+
     </div>
   </form>
 </div>

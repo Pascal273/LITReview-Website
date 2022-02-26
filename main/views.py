@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.core.paginator import Paginator
 from django.contrib import messages
 from django.db.models import Q
 
@@ -29,7 +30,11 @@ def home(request):
     feed = sorted(
         chain(tickets, reviews), key=lambda i: i.time_created, reverse=True
     )
-    return render(request, "main/home.html", {'feed': feed})
+    paginator = Paginator(feed, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "main/home.html", {'feed': page_obj})
 
 
 @login_required
@@ -88,8 +93,9 @@ def create_review(request, ticket_id):
         if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
+            review.ticket = ticket
             review.save()
-            redirect('home')
+            return redirect('home')
     context = {
         'form': form,
         'post': ticket,

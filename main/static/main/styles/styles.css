@@ -106,29 +106,6 @@
   align-items: center;
   width: 80vw;
 }
-.feed .review-head {
-  display: flex;
-  justify-content: space-between;
-  width: 97%;
-}
-.feed .review-body {
-  display: flex;
-  flex-direction: column;
-  width: 97%;
-  justify-content: flex-start;
-}
-.feed .review-body p {
-  margin: 0;
-}
-.feed .review-view {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 95%;
-  border: solid 1px;
-  margin: 20px 0;
-  padding: 20px 0;
-}
 
 .following {
   display: flex;
@@ -221,7 +198,7 @@
 .ticket-with-review-content form #div_id_rating .form-check label {
   padding: 0 0 0 10px;
 }
-.ticket-with-review-content form #review-with-ticket-button-area {
+.ticket-with-review-content form .review-with-ticket-button-area {
   display: flex;
   justify-content: flex-end;
 }
@@ -254,6 +231,41 @@
 .ticket-view img {
   max-width: 300px;
   max-height: 300px;
+}
+
+.review-head {
+  display: flex;
+  justify-content: space-between;
+  width: 97%;
+}
+
+.review-body {
+  display: flex;
+  flex-direction: column;
+  width: 97%;
+  justify-content: flex-start;
+}
+.review-body svg {
+  margin-top: -6px;
+}
+.review-body p {
+  margin: 0;
+}
+
+.review-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  border: solid 1px;
+  margin: 20px 0;
+  padding: 20px 0;
+}
+
+i {
+  color: black;
+  width: 50px;
+  height: 50px;
 }
 
 body {
