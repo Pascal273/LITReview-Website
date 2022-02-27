@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+  Edit Your Own Review
+{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="ticket-with-review-content">
+
+  <form method="post" class="form-group">
+    <div class="form-section">
+      <h5>You are posting in response to</h5>
+      {% include "main/partials/ticket_snippet.html" %}
+    </div>
+    <div class="form-section">
+      <h5>Review</h5>
+      {{ form|crispy }}
+      {% csrf_token %}
+      <div class="review-with-ticket-button-area">
+        <button class="btn btn-secondary" type="submit">Submit</button>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+{% endblock content %}

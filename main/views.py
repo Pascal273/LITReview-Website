@@ -165,11 +165,24 @@ def edit_ticket(request, ticket_id):
             form.fields["image"].widget.attrs[
                 'data-text'] = 'Upload New File'
 
-    context = {
-        'form': form,
-        'image': image_url,
-    }
+    context = {'form': form, 'image': image_url}
     return render(request, 'main/edit_ticket.html', context)
+
+
+@login_required
+def edit_review(request, review_id):
+    review = get_object_or_404(models.Review, id=review_id)
+    ticket_id = review.ticket.id
+    ticket = get_object_or_404(models.Ticket, id=ticket_id)
+    form = forms.ReviewForm(instance=review)
+    if request.method == 'POST':
+        form = forms.ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect('posts')
+
+    context = {'form': form, 'post': ticket}
+    return render(request, 'main/edit_review.html', context)
 
 
 @login_required

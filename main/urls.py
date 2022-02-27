@@ -13,6 +13,7 @@ urlpatterns = [
          name="create_review_with_ticket"),
     path("ticket_review", views.create_review, name="ticket_response"),
     path("post/review", views.posts, name="posts"),
-    path("post/edit/<int:ticket_id>", views.edit_ticket, name="edit_ticket"),
+    path("edit/ticket/<int:ticket_id>", views.edit_ticket, name="edit_ticket"),
+    path("edit/review/<int:review_id>", views.edit_review, name="edit_review"),
     path("post/delete/<int:post_id>", views.delete_post, name="delete_post"),
 ]
