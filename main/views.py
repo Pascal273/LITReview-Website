@@ -73,9 +73,9 @@ def following(request):
 
 @login_required
 def create_ticket(request):
-    form = forms.CreateTicketForm()
+    form = forms.TicketForm()
     if request.method == 'POST':
-        form = forms.CreateTicketForm(request.POST, request.FILES)
+        form = forms.TicketForm(request.POST, request.FILES)
         if form.is_valid():
             ticket = form.save(commit=False)
             ticket.user = request.user
@@ -86,10 +86,10 @@ def create_ticket(request):
 
 @login_required
 def create_review(request, ticket_id):
-    form = forms.CreateReviewForm()
+    form = forms.ReviewForm()
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     if request.method == 'POST':
-        form = forms.CreateReviewForm(request.POST)
+        form = forms.ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
@@ -105,11 +105,11 @@ def create_review(request, ticket_id):
 
 @login_required
 def create_ticket_with_review(request):
-    ticket_form = forms.CreateTicketForm()
-    review_form = forms.CreateReviewForm()
+    ticket_form = forms.TicketForm()
+    review_form = forms.ReviewForm()
     if request.method == 'POST':
-        ticket_form = forms.CreateTicketForm(request.POST, request.FILES)
-        review_form = forms.CreateReviewForm(request.POST)
+        ticket_form = forms.TicketForm(request.POST, request.FILES)
+        review_form = forms.ReviewForm(request.POST)
         if all([ticket_form.is_valid(), review_form.is_valid()]):
             ticket = ticket_form.save(commit=False)
             ticket.user = request.user
@@ -124,3 +124,54 @@ def create_ticket_with_review(request):
         'review_form': review_form,
     }
     return render(request, 'main/create_review_with_ticket.html', context)
+
+
+@login_required
+def posts(request):
+    # get tickets created by followed users or the user
+    tickets = models.Ticket.objects.filter(
+        Q(user__in=request.user.follows.all()) | Q(user=request.user)
+    )
+    # get reviews created by only the user
+    reviews = models.Review.objects.filter(user=request.user)
+    # sort all items in feed, newest first
+    feed = sorted(
+        chain(tickets, reviews), key=lambda i: i.time_created, reverse=True
+    )
+    paginator = Paginator(feed, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'feed': page_obj,
+    }
+    return render(request, "main/posts.html", context)
+
+
+@login_required
+def edit_ticket(request, ticket_id):
+    ticket = get_object_or_404(models.Ticket, id=ticket_id)
+    image_url = ticket.image.url
+    form = forms.TicketForm(instance=ticket)
+    if request.method == 'POST':
+        form = forms.TicketForm(
+            request.POST, request.FILES, instance=ticket)
+        if form.is_valid():
+            form.save()
+            return redirect('posts')
+
+    if request.method == 'GET':
+        if image_url:
+            form.fields["image"].widget.attrs[
+                'data-text'] = 'Upload New File'
+
+    context = {
+        'form': form,
+        'image': image_url,
+    }
+    return render(request, 'main/edit_ticket.html', context)
+
+
+@login_required
+def delete_post(request, id):
+    return render(request, 'main/delete_post.html', {})

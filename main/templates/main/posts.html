@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load main_extras %}
+
+{% block title %}
+Review your own posts
+{% endblock title %}
+
+{% block content %}
+  <div class="feed">
+    {% for post in feed %}
+      {% if post|model_type == 'Ticket' and post.user == request.user %}
+        {% include "main/partials/ticket_snippet.html" %}
+      {% elif post|model_type == 'Review' %}
+        {% include "main/partials/review_snippet.html" %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% include "main/partials/page_navigator.html" %}
+
+{% endblock content %}

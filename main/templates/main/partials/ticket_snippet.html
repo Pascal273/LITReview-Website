@@ -17,13 +17,19 @@
       <img src="{{ post.image.url }}" alt="">
     </div>
   {% endif %}
-  {% if not form %}
+  {% if not form and request.path != '/post/review' %}
     <div class="post-review-button-area">
     <a type="button" role="button" class="btn btn-secondary"
        href="{% url 'create_review' post.id %}">Post a Review</a>
   </div>
+  {% elif request.path == '/post/review' %}
+    <div class="post-review-button-area">
+      <a type="button" role="button" class="btn btn-secondary"
+       href="{% url 'edit_ticket' post.id %}">Edit</a>
+      <a type="button" role="button" class="btn btn-secondary"
+       href="{% url 'delete_post' post.id %}">Delete</a>
+    </div>
   {% endif %}
-
 
 {% else %}
   <div class="ticket-head">

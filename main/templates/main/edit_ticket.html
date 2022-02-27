@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-  Create a Ticket
+  Edit your own ticket
 {% endblock title %}
 
 {% load crispy_forms_tags %}
@@ -9,18 +9,15 @@
 {% block content %}
 
 <div class="ticket-content">
-  <h4>Create a Ticket</h4>
+  <h4>Edit Your Ticket</h4>
   <form method="post" class="form-group" enctype="multipart/form-data">
     {{ form|crispy }}
     {% csrf_token %}
-
-    <img src="" alt="" id="ticket-image">
-
+    <img src="{{ image }}" alt="" id="ticket-image">
     <div class="ticket-button-area">
       <div class="upload-button-area">
-        <button class="btn btn-light" type="button" id="uploadImage"
-                onclick="document.getElementById('id_image').click()"
-        >Upload File</button>
+        <button class="btn btn-light" type="button" id="uploadImage" onclick="document.getElementById(
+        'id_image').click()">Upload New File</button>
       </div>
       <div>
         <button class="btn btn-light" type="submit">Submit</button>
@@ -28,4 +25,5 @@
     </div>
   </form>
 </div>
+
 {% endblock content %}
