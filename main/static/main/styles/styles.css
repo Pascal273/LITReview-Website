@@ -275,6 +275,40 @@ i {
   height: 50px;
 }
 
+.modal-container {
+  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.modal-container .modal {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 40%;
+  height: fit-content;
+  border: 1px solid;
+  border-radius: 6px;
+  position: relative;
+}
+.modal-container .modal div {
+  padding: 30px 20px;
+  margin: 0;
+}
+.modal-container .modal div p {
+  margin: 0;
+}
+.modal-container .modal div h3 {
+  margin: 0;
+}
+
 body {
   width: 100vw;
   display: flex;
@@ -292,7 +326,7 @@ body img {
   width: 98%;
   margin-top: 30px;
 }
-.post-review-button-area a {
+.post-review-button-area button, .post-review-button-area a {
   margin-left: 30px;
   min-width: 100px;
 }

@@ -186,5 +186,10 @@ def edit_review(request, review_id):
 
 
 @login_required
-def delete_post(request, id):
-    return render(request, 'main/delete_post.html', {})
+def delete_post(request, post_type, post_id):
+    if post_type == 'Ticket':
+        post = models.Ticket.objects.get(id=post_id)
+    else:
+        post = models.Review.objects.get(id=post_id)
+    post.delete()
+    return redirect('posts')

@@ -32,8 +32,8 @@
     <div class="post-review-button-area">
       <a type="button" role="button" class="btn btn-secondary"
        href="{% url 'edit_review' post.id %}">Edit</a>
-      <a type="button" role="button" class="btn btn-danger"
-       href="{% url 'delete_post' post.id %}">Delete</a>
+      <button type="button" role="button" class="btn btn-danger delete-button" name="delete"
+              value="{% url 'delete_post' post|model_type post.id %}" id="delete-button">Delete</button>
     </div>
   {% endif %}
 </div>

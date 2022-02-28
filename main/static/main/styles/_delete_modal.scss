@@ -1,0 +1,33 @@
+.modal-container {
+  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  .modal {
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    width: 40%;
+    height: fit-content;
+    border: 1px solid;
+    border-radius: 6px;
+    position: relative;
+    div{
+      padding: 30px 20px;
+      margin: 0;
+      p{
+        margin: 0;
+      }
+      h3 {
+        margin: 0;
+      }
+    }
+  }
+}

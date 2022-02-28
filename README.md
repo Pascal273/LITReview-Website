@@ -36,6 +36,8 @@ or copy and paste the URL that is displayed in the Terminal.
 Steps 1-3 are only required for initial installation. For subsequent launches,
 you only have to execute step 5 from the root folder of the project.
 
+The File `Users.txt` contains a list of some users and their passwords.
+
 ## Technologies
 - Python version 3.9.5
 - Django version 4.0.1
