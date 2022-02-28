@@ -8,11 +8,10 @@ Log In
 
 {% block content %}
 
-
-
 <div class="alert alert-warning" role="alert"
 style="{% if not failed %}visibility: hidden{% endif %}">
-  Login failed! No account? <a href="{% url 'register' %}" class="alert-link">Sign Up Now</a>!
+  Login failed! No account? <a href="{% url 'register' %}" class="alert-link"
+  >Sign Up Now</a>!
   </div>
 
 <div class="loginPage">
