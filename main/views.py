@@ -47,7 +47,7 @@ def following(request):
         # follow users
         if form.is_valid():
             if form.cleaned_data:
-                name = form.cleaned_data['follow_user']
+                name = form.cleaned_data['follow_user'].capitalize()
                 User = get_user_model()
                 users = User.objects.all()
                 # check if user exists
@@ -138,7 +138,7 @@ def posts(request):
     feed = sorted(
         chain(tickets, reviews), key=lambda i: i.time_created, reverse=True
     )
-    paginator = Paginator(feed, 6)
+    paginator = Paginator(feed, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
