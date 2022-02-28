@@ -151,7 +151,9 @@ def posts(request):
 @login_required
 def edit_ticket(request, ticket_id):
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
-    image_url = ticket.image.url
+    image_url = ''
+    if ticket.image:
+        image_url = ticket.image.url
     form = forms.TicketForm(instance=ticket)
     if request.method == 'POST':
         form = forms.TicketForm(

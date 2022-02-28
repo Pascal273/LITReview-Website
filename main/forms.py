@@ -13,6 +13,7 @@ class FollowUserForm(forms.Form):
 
 class TicketForm(forms.ModelForm):
     image = forms.ImageField(
+        required=False,
         widget=forms.FileInput(
             attrs={'hidden': 'hidden'}
         ),
