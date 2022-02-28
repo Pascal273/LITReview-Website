@@ -22,7 +22,6 @@ if (file) {
   });
 }
 
-
 // Modal window setup
 const delete_buttons = document.getElementsByClassName("delete-button");
 for (const delete_button of delete_buttons) {
