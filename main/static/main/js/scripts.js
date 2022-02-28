@@ -1,3 +1,13 @@
+
+// mark the active navbar-link
+let navbar_links = document.getElementsByClassName('nav-link');
+for (let link of navbar_links) {
+  const currentLocation = location.href;
+  if (link.href === currentLocation) {
+    link.classList.add('active');
+  }
+}
+
 // displays the ticket-image before submitting the form
 const file = document.getElementById("id_image");
 if (file) {
@@ -35,4 +45,3 @@ outsideModal.addEventListener("click", (event) => {
     document.getElementById('modalReturn-button').click();
   }
 });
-
