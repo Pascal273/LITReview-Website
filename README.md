@@ -34,7 +34,7 @@ accessed with your browser by pasting the URL: `http://127.0.0.1:8000/`
 or copy and paste the URL that is displayed in the Terminal.
 
 Steps 1-3 are only required for initial installation. For subsequent launches,
-you only have to execute step 5 from the root folder of the project.
+you only have to execute step 4 from the root folder of the project.
 
 The File `Users.txt` contains a list of some users and their passwords.
 
