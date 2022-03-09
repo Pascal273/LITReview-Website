@@ -28,7 +28,8 @@
     {% endif %}
   {% endfor %}
 
-  {% if request.path == '/post/review' %}
+  {% url 'posts' as posts %}
+  {% if request.path == posts %}
     <div class="post-review-button-area">
       <a type="button" role="button" class="btn btn-secondary"
        href="{% url 'edit_review' post.id %}">Edit</a>
